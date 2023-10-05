@@ -9,19 +9,18 @@ a {
 
 input[type=text] {
   width: 60%;
-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 50px;
-  font-size: 16px;
-transition:0.1s;
-
-  background-color: white;
-  background-image: url('https://www.w3schools.com/css/searchicon.png');
-  background-position: 95% 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-sizing: border-box;
+    border: 2px solid #474747;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: 0.1s;
+    background-color: #353535;
+    background-image: url(https://www.w3schools.com/css/searchicon.png);
+    background-position: 95% 10px;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    padding: 12px 20px;
 }
 
 input[type=text]:focus {
