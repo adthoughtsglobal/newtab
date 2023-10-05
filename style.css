@@ -16,7 +16,7 @@ input[type=text] {
     font-size: 16px;
     transition: 0.1s;
     background-color: #353535;
-    background-image: url(https://www.w3schools.com/css/searchicon.png);
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/VisualEditor_-_Icon_-_Search-big_-_white.svg/1200px-VisualEditor_-_Icon_-_Search-big_-_white.svg.png);
     background-position: 95% 10px;
     background-blend-mode: multiply;
     background-repeat: no-repeat;
