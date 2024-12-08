@@ -1,0 +1,13 @@
+{
+
+  "short_name": "New World234234 Markdown",
+  "name": "New World234234 Markdown",
+  "version": "1.0.7",
+  "author": "Helge Ahrens + NovaOS",
+  "description": "Store your thoughts, everything.",
+  "manifest_version": 3,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["history"]
+}
