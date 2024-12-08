@@ -129,6 +129,10 @@ var wallpapersstd = {
     }
 }
 
+function removeUnnecessaryChars(str) {
+    return str.replace(/[^a-zA-Z0-9\s\+\&\?\.\[\]:]/g, ' ');
+}
+
 async function loadHistory() {
     const keys = Object.keys(wallpapersstd);
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
@@ -149,9 +153,7 @@ async function loadHistory() {
 
         const splitTitle = title.split(/[\|\-\:]/);
 
-        function removeUnnecessaryChars(str) {
-            return str.replace(/[^a-zA-Z0-9\s\+\&\?\.\[\]:]/g, ' ');
-        }
+        
 
         const mainTitle = removeUnnecessaryChars(splitTitle[0].trim());
         const subtext = splitTitle.slice(1).join('').trim() || new URL(url).hostname;
@@ -189,7 +191,6 @@ async function loadHistory() {
         results.forEach(({ title, url, visitCount }) => {
             const majorTitle = title.split(/[\|\-\:]/)[0].trim();
 
-            // Track visits to major titles
             if (
                 (!visited.has(title) || visitCount > visited.get(title).visitCount) &&
                 (majorTitleCount.get(majorTitle) || 0) < 3
@@ -216,34 +217,16 @@ async function loadHistory() {
             count = renderLink({ title, url, count });
         });
 
-        const topKeywords = Array.from(keywordCount.entries())
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 10)
-            .map(([keyword, frequency]) => ({ keyword, frequency }));
+        const sources = new Set();
+        sorted.forEach(({ title }) => {
+            const source = title.split(/[\|\-\:]/)[0].trim();
+            sources.add(removeUnnecessaryChars(source).trim());
+        });
 
-        async function fetchFirst2Lines(title) {
-            const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=true&explaintext=true&titles=${encodeURIComponent(title)}&utf8=1&origin=*`;
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`Network response was not ok: ${response.status}`);
-            const data = await response.json();
+        const sourceArray = Array.from(sources).slice(0, 5);
+        const summary = `Write what you did with ${sourceArray.join(', ')}${sources.size > 3 ? ', and more' : ''}...`;
 
-            const pageId = Object.keys(data.query.pages)[0];
-            const text = data.query.pages[pageId].extract;
-            if (!text || text.includes("may refer to")) {
-                return
-            }
-            return text.split(/[.!?]/).slice(0, 1).join('. ') + '. <br>';
-        }
-
-        async function getKeywordDefinitions(keywords) {
-            const definitions = await Promise.all(keywords.map(async keyword => ({
-                keyword,
-                definition: (await fetchFirst2Lines(keyword) ) ? await fetchFirst2Lines(keyword) + '<br>' : '',
-            })));
-            return definitions.map(({ keyword, definition }) => `${definition}`).join('');
-        }
-
-        document.querySelectorAll(".CodeMirror-placeholder")[0].innerHTML = await getKeywordDefinitions(topKeywords.map(item => item.keyword))
+        document.querySelectorAll(".CodeMirror-placeholder")[0].textContent = summary;
     });
 }
 

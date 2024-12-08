@@ -16,3 +16,9 @@ This is the best of all new tabs. Take a look at the features
 - New wallpapers based on system theme + changes every time.
 - Minimal, frosted glass UI, setup - easy as downloading an extension.
 - You can type as long as you want!!!
+
+## Credits
+- Helge Ahrens for New Tab Markdown 1.05 extension on WebStore. This was used as the base for all of this
+- Dsanson for https://gist.github.com/dsanson/994a364c55232ea037b4e9176d5d7ebf
+- Unsplash for the backgrounds
+- Wikimedia API for idea preview.
