@@ -1,5 +1,5 @@
+![image](https://github.com/user-attachments/assets/991e758a-3d16-4a3b-b777-ec4cd0713016)
 # How to install this Newtab in Chrome?
-
 1. Download this repo as zip
 2. unzip and store the repo as a folder
 3. Open chrome, navigate to `chrome://extensions` page
@@ -10,6 +10,7 @@
 This is the best of all new tabs. Take a look at the features
 
 ## Features?
+- [NEW] Auto generated note ideas from your browser history!!
 - Markdown notepad with infinite pages which saves as you type.
 - Most used webpages from your recent history.
 - Badges: Content rich list of most used sites.
