@@ -183,7 +183,7 @@ async function loadHistory() {
     };
 
     // Sample search and rendering
-    chrome.history.search({ text: '', maxResults: 80 }, async (results) => {
+    chrome.history.search({ text: '', maxResults: 200 }, async (results) => {
         const visited = new Map();
         const majorTitleCount = new Map();
         const keywordCount = new Map();

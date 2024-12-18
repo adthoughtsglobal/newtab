@@ -1026,8 +1026,9 @@ div#historydivs {
     padding: 5px;
     display: flex;
     align-items: center;
-    justify-content: center;
     aspect-ratio: 1 / 1;
     width: 25px;
     box-shadow: 0 0 1rem #4d4d4d;
+    text-align: left;
+    overflow: hidden;
 }
